@@ -16,6 +16,7 @@ export class DataService {
     return this.http.get(`${this.baseUrl}`);
   }
 
-  public createPack(pack: {id: number, name: string, count: number}) {
+  public createPack(pack: Pack): Observable<Pack> {
+    return this.http.post<Pack>(`${this.baseUrl}`, pack);
   }
 }
