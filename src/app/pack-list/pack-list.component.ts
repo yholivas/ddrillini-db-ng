@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DataService } from '../data.service';
+import { Pack } from '../pack';
 
 @Component({
   selector: 'app-pack-list',
@@ -8,16 +9,17 @@ import { DataService } from '../data.service';
   styleUrls: ['./pack-list.component.css']
 })
 export class PackListComponent implements OnInit {
-  packs;
-  selectedPack;
+  packs: Pack[];
+  selectedPack: Pack;
 
   constructor(public dataService: DataService) { }
 
   ngOnInit() {
-    this.packs = this.dataService.getPacks();
+    this.dataService.getPacks()
+      .subscribe(packs => this.packs = packs);
   }
 
-  public selectPack(pack) {
+  public selectPack(pack: Pack) {
     this.selectedPack = pack;
   }
 }

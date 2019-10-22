@@ -1,24 +1,21 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { Pack } from './pack';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+  private baseUrl = '/api/packs';
   // add pack banners later once I know how images work
-  packs = [
-    {id: 1, name: "Mute Sims", count: 10},
-    {id: 2, name: "Notice Me Benpai", count: 12},
-    {id: 3, name: "Sudziosis", count: 16},
-    {id: 4, name: "Rikame's Simfiles", count: 13}
-  ];
+  constructor(private http: HttpClient) { }
 
-  constructor() { }
-
-  public getPacks(): Array<{id: number, name: string, count: number}> {
-    return this.packs;
+  public getPacks(): Observable<any> {
+    return this.http.get(`${this.baseUrl}`);
   }
 
   public createPack(pack: {id: number, name: string, count: number}) {
-    this.packs.push(pack);
   }
 }
