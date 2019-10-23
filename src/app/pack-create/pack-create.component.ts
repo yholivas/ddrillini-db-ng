@@ -11,12 +11,24 @@ import { Pack } from '../pack';
 })
 export class PackCreateComponent implements OnInit {
   pack: Pack = {id: null, name: "", count: null};
+  uploadedFile: File;
 
   constructor(
     public dataService: DataService,
     private router: Router) { }
 
   ngOnInit() {
+  }
+
+  fileChange(element) {
+    this.uploadedFile = element.files[0];
+  }
+
+  upload() {
+    let formData = new FormData();
+    formData.append("upload", this.uploadedFile, this.uploadedFile.name);
+    this.dataService.uploadFile(formData)
+      .subscribe(() => this.createPack());
   }
 
   createPack() {

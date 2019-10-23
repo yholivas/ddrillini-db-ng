@@ -7,21 +7,23 @@
       <div>
         <form>
           <div class="form-group">
-            <label for="id">ID</label>
-            <input [(ngModel)]="pack.id" type="text" name="id" class="form-control" id="id" aria-describedby="idHelp" placeholder="Enter ID">
-            <small id="idHelp" class="form-text text-muted">Enter pack ID</small>
-
             <label for="name">Pack Name</label>
-            <input [(ngModel)]="pack.name" type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter pack name">
-            <small id="nameHelp" class="form-text text-muted">Enter song pack name</small>
+            <input [(ngModel)]="pack.name" type="text" name="name" class="form-control"
+                id="name" aria-describedby="nameHelp" placeholder="Enter pack name">
 
             <label for="email">Song Count</label>
-            <input [(ngModel)]="pack.count" type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp"
-              placeholder="Enter song count">
-            <small id="nameHelp" class="form-text text-muted">Enter # of songs in pack</small>
+            <input [(ngModel)]="pack.count" type="text" name="count" class="form-control"
+                id="count" aria-describedby="countHelp" placeholder="Enter song count">
           </div>
         </form>
-        <button class="btn btn-primary" (click)="createPack()">Create pack</button>
+        <div class="custom-file">
+          <form action="/api/fileserver/upload" method="post" enctype="multipart/form-data">
+            <input (change)="fileChange($event.target)" type="file" class="custom-file-input"
+                id="inputFile" aria-describedby="inputFileAddon">
+          </form>
+          <label class="custom-file-label" for="inputFile">Banner file</label>
+        </div>
+        <button class="btn btn-primary" (click)="upload()">Create pack</button>
       </div>
     </div>
   </div>
