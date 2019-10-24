@@ -12,6 +12,7 @@ export class DataService {
   // add pack banners later once I know how images work
   constructor(private http: HttpClient) { }
 
+  // returns absolute file path rn
   public uploadFile(form: FormData): Observable<string> {
     return this.http.post('/api/fileserver/upload', form, {responseType: 'text'});
   }

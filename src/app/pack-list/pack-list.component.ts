@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { DataService } from '../data.service';
 import { Pack } from '../pack';
@@ -11,8 +13,11 @@ import { Pack } from '../pack';
 export class PackListComponent implements OnInit {
   packs: Pack[];
   selectedPack: Pack;
+  imageData: any;
 
-  constructor(public dataService: DataService) { }
+  constructor(private http: HttpClient,
+              private sanitizer: DomSanitizer,
+              public dataService: DataService) { }
 
   ngOnInit() {
     this.dataService.getPacks()
@@ -21,5 +26,7 @@ export class PackListComponent implements OnInit {
 
   public selectPack(pack: Pack) {
     this.selectedPack = pack;
+    this.http.get(`api/fileserver/download/${pack.banner}`, {responseType: 'text'})
+      .subscribe( data => this.imageData = 'data:image/png;base64,' + data);
   }
 }

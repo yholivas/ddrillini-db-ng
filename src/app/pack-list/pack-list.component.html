@@ -5,6 +5,7 @@
         <th>#</th>
         <th>Name</th>
         <th>Song Count</th>
+        <th>Banner</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -14,6 +15,7 @@
         <td>{{ pack.id }}</td>
         <td> {{ pack.name }}</td>
         <td> {{ pack.count }}</td>
+        <td>{{ pack.banner }}</td>
         <td>
           <button class="btn btn-primary" (click)="selectPack(pack)"> Show details</button>
         </td>
@@ -26,11 +28,9 @@
       </div>
       <div class="card-block">
         <h4 class="card-title">{{selectedPack.name}}</h4>
+        <img [src]="sanitizer.bypassSecurityTrustUrl(imageData)" />
         <p class="card-text">
           Stepmania Pack
-        </p>
-        <p class="card-text" *ngIf="selectedPack.name == 'Sudziosis'">
-          I fucking love this pack!
         </p>
       </div>
 

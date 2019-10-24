@@ -10,7 +10,7 @@ import { Pack } from '../pack';
   styleUrls: ['./pack-create.component.css']
 })
 export class PackCreateComponent implements OnInit {
-  pack: Pack = {id: null, name: "", count: null};
+  pack: Pack = {id: null, name: "", count: null, banner: ""};
   uploadedFile: File;
 
   constructor(
@@ -28,13 +28,13 @@ export class PackCreateComponent implements OnInit {
     let formData = new FormData();
     formData.append("upload", this.uploadedFile, this.uploadedFile.name);
     this.dataService.uploadFile(formData)
-      .subscribe(() => this.createPack());
+      .subscribe(banner => this.createPack(banner));
   }
 
-  createPack() {
+  createPack(banner: string) {
+    this.pack.banner = banner;
     this.dataService.createPack(this.pack)
       .subscribe(() => this.router.navigate(['/pack-list']),
                  error => console.log(error));
-    this.pack = {id: null, name: "", count: null};
   }
 }
