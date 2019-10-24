@@ -13,6 +13,7 @@ import { Pack } from '../pack';
 export class PackListComponent implements OnInit {
   packs: Pack[];
   selectedPack: Pack;
+  images: Map<number, string>;
   imageData: any;
 
   constructor(private http: HttpClient,
@@ -20,13 +21,22 @@ export class PackListComponent implements OnInit {
               public dataService: DataService) { }
 
   ngOnInit() {
+    this.images = new Map();
     this.dataService.getPacks()
-      .subscribe(packs => this.packs = packs);
+      .subscribe(packs => {
+        this.packs = packs;
+        for (const pack of packs) {
+          this.recvBanner(pack);
+        }
+      });
+  }
+
+  public recvBanner(pack: Pack): void {
+    this.http.get(`api/fileserver/download/${pack.banner}`, {responseType: 'text'})
+      .subscribe( data => this.images.set(pack.id, 'data:image/png;base64,' + data));
   }
 
   public selectPack(pack: Pack) {
     this.selectedPack = pack;
-    this.http.get(`api/fileserver/download/${pack.banner}`, {responseType: 'text'})
-      .subscribe( data => this.imageData = 'data:image/png;base64,' + data);
   }
 }

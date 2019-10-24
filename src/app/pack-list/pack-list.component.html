@@ -15,7 +15,7 @@
         <td>{{ pack.id }}</td>
         <td> {{ pack.name }}</td>
         <td> {{ pack.count }}</td>
-        <td>{{ pack.banner }}</td>
+        <td><img [src]="sanitizer.bypassSecurityTrustUrl(images.get(pack.id))" width="100" /></td>
         <td>
           <button class="btn btn-primary" (click)="selectPack(pack)"> Show details</button>
         </td>
@@ -28,7 +28,7 @@
       </div>
       <div class="card-block">
         <h4 class="card-title">{{selectedPack.name}}</h4>
-        <img [src]="sanitizer.bypassSecurityTrustUrl(imageData)" />
+        <img [src]="sanitizer.bypassSecurityTrustUrl(images.get(selectedPack.id))" width="300" />
         <p class="card-text">
           Stepmania Pack
         </p>
