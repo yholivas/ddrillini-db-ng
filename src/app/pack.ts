@@ -1,6 +1,8 @@
+import { Song } from './song';
+
 export class Pack {
   id: number;
   name: string;
-  count: number;
   banner: string;
+  song: Song[];
 }
