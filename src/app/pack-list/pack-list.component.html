@@ -6,30 +6,27 @@
         <th>Name</th>
         <th>Song Count</th>
         <th>Banner</th>
-        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let pack of packs">
+      <tr (click)="selectPack(pack)" *ngFor="let pack of packs">
 
         <td>{{ pack.id }}</td>
         <td> {{ pack.name }}</td>
-        <td> {{ pack.song.length }}</td>
-        <td><img [src]="sanitizer.bypassSecurityTrustUrl(images.get(pack.id))" width="100" /></td>
-        <td>
-          <button class="btn btn-primary" (click)="selectPack(pack)"> Show details</button>
-        </td>
-      </tr>
+        <td> {{ pack.songs.length }}</td>
+        <td><img [src]="sanitizer.bypassSecurityTrustUrl(images.get(pack.id))" width="150" /></td>
     </tbody>
   </table>
   <div class="card text-center" *ngIf="selectedPack">
       <div class="card-header">
-        {{ selectedPack.name }}
+        <h3>
+          {{ selectedPack.name }}
+        </h3>
       </div>
       <div class="card-block">
-        <h2 *ngFor="let song of selectedPack.song">
-          {{ song.title }}
-        </h2>
+        <div *ngFor="let song of selectedPack.songs">
+          <h4>{{ song.title }}</h4>{{ song.banner }}
+        </div>
       </div>
 
     </div>

@@ -10,7 +10,7 @@ import { Pack } from '../pack';
   styleUrls: ['./pack-create.component.css']
 })
 export class PackCreateComponent implements OnInit {
-  pack: Pack = {id: null, name: "", banner: "", song: null};
+  pack: Pack = {id: null, name: "", banner: "", songs: null};
   uploadedFile: File;
 
   constructor(

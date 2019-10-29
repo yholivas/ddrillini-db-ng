@@ -1,6 +1,11 @@
-# PacksList
+# DDRIllini Online DB
+## Angular Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
+
+## Setup
+
+Change the `proxy.conf.json` target to the URL of the API server
 
 ## Development server
 
