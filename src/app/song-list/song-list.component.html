@@ -1,0 +1,21 @@
+<div class="container" style="margin-top: 80px;">
+  <h3>Songs in <span style="font-style: italic">{{ this.pack.name }}</span></h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Banner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let song of pack.songs">
+        <td>{{ song.id }}</td>
+        <td>{{ song.title }}</td>
+        <td><img [src]="sanitizer.bypassSecurityTrustUrl(banners.get(song.id))" width="150" /></td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-primary" (click)="back()">Go Back</button>
+</div>
+

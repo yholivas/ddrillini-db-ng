@@ -4,13 +4,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { PackListComponent } from './pack-list/pack-list.component';
 import { PackCreateComponent } from './pack-create/pack-create.component';
 import { HomeComponent } from './home/home.component';
+import { SongListComponent } from './song-list/song-list.component';
 
 
 const routes: Routes = [
   {path: "", pathMatch: "full", redirectTo: "home"},
   {path: "home", component: HomeComponent},
   {path: "pack-create", component: PackCreateComponent},
-  {path: "pack-list", component: PackListComponent}
+  {path: "packs", component: PackListComponent},
+  {path: "songs/:id", component: SongListComponent}
 ];
 
 @NgModule({

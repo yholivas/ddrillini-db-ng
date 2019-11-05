@@ -10,6 +10,7 @@ import { PackListComponent } from './pack-list/pack-list.component';
 import { PackCreateComponent } from './pack-create/pack-create.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { SongListComponent } from './song-list/song-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FooterComponent } from './footer/footer.component';
     PackListComponent,
     PackCreateComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SongListComponent
   ],
   imports: [
     BrowserModule,

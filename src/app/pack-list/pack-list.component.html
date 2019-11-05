@@ -9,25 +9,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr (click)="selectPack(pack)" *ngFor="let pack of packs">
-
+      <tr *ngFor="let pack of packs" [routerLink]="['/songs', pack.id]">
         <td>{{ pack.id }}</td>
-        <td> {{ pack.name }}</td>
-        <td> {{ pack.songs.length }}</td>
+        <td>{{ pack.name }}</td>
+        <td>{{ pack.songs.length }}</td>
         <td><img [src]="sanitizer.bypassSecurityTrustUrl(images.get(pack.id))" width="150" /></td>
+      </tr>
     </tbody>
   </table>
-  <div class="card text-center" *ngIf="selectedPack">
-      <div class="card-header">
-        <h3>
-          {{ selectedPack.name }}
-        </h3>
-      </div>
-      <div class="card-block">
-        <div *ngFor="let song of selectedPack.songs">
-          <h4>{{ song.title }}</h4>{{ song.banner }}
-        </div>
-      </div>
-
-    </div>
 </div>

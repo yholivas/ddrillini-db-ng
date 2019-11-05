@@ -12,7 +12,6 @@ import { Pack } from '../pack';
 })
 export class PackListComponent implements OnInit {
   packs: Pack[];
-  selectedPack: Pack;
   images: Map<number, string>;
   imageData: any;
 
@@ -32,11 +31,7 @@ export class PackListComponent implements OnInit {
   }
 
   public recvBanner(pack: Pack): void {
-    this.http.get(`api/fileserver/download/${pack.banner}`, {responseType: 'text'})
+    this.dataService.recvBanner(pack.banner)
       .subscribe( data => this.images.set(pack.id, 'data:image/png;base64,' + data));
-  }
-
-  public selectPack(pack: Pack) {
-    this.selectedPack = pack;
   }
 }
