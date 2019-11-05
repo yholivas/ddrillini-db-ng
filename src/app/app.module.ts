@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PackListComponent } from './pack-list/pack-list.component';
-import { PackCreateComponent } from './pack-create/pack-create.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SongListComponent } from './song-list/song-list.component';
@@ -17,7 +16,6 @@ import { SongListComponent } from './song-list/song-list.component';
     AppComponent,
     HomeComponent,
     PackListComponent,
-    PackCreateComponent,
     HeaderComponent,
     FooterComponent,
     SongListComponent

@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 
-import { DataService } from '../data.service';
+import { PackService } from '../pack.service';
+import { FileService } from '../file.service';
 import { Pack } from '../pack';
 
 @Component({
@@ -15,13 +16,16 @@ export class PackListComponent implements OnInit {
   images: Map<number, string>;
   imageData: any;
 
-  constructor(private http: HttpClient,
-              private sanitizer: DomSanitizer,
-              public dataService: DataService) { }
+  constructor(
+    private http: HttpClient,
+    private sanitizer: DomSanitizer,
+    private packServ: PackService,
+    private fileServ: FileService
+  ) { }
 
   ngOnInit() {
     this.images = new Map();
-    this.dataService.getPacks()
+    this.packServ.getPacks()
       .subscribe(packs => {
         this.packs = packs;
         for (const pack of packs) {
@@ -31,7 +35,7 @@ export class PackListComponent implements OnInit {
   }
 
   public recvBanner(pack: Pack): void {
-    this.dataService.recvBanner(pack.banner)
+    this.fileServ.recvBanner(pack.banner)
       .subscribe( data => this.images.set(pack.id, 'data:image/png;base64,' + data));
   }
 }

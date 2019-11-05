@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let song of pack.songs">
+      <tr *ngFor="let song of songs">
         <td>{{ song.id }}</td>
         <td>{{ song.title }}</td>
         <td><img [src]="sanitizer.bypassSecurityTrustUrl(banners.get(song.id))" width="150" /></td>

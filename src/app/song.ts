@@ -4,5 +4,5 @@ export class Song {
   id: number;
   title: string;
   banner: string;
-  pack: Pack;
+  packId: number;
 }

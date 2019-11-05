@@ -12,7 +12,7 @@
       <tr *ngFor="let pack of packs" [routerLink]="['/songs', pack.id]">
         <td>{{ pack.id }}</td>
         <td>{{ pack.name }}</td>
-        <td>{{ pack.songs.length }}</td>
+        <td>{{ pack.songCount }}</td>
         <td><img [src]="sanitizer.bypassSecurityTrustUrl(images.get(pack.id))" width="150" /></td>
       </tr>
     </tbody>
