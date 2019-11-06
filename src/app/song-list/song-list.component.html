@@ -4,14 +4,16 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>Title</th>
+        <th>Title/Subtitle</th>
+        <th>Artist</th>
         <th>Banner</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let song of songs">
         <td>{{ song.id }}</td>
-        <td>{{ song.title }}</td>
+        <td><div>{{ song.title }}</div><div>{{ song.subtitle}}</div></td>
+        <td>{{ song.artist }}</td>
         <td><img [src]="sanitizer.bypassSecurityTrustUrl(banners.get(song.id))" width="150" /></td>
       </tr>
     </tbody>
